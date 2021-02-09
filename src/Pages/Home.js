@@ -1,5 +1,7 @@
+import ActiveView from "./CV/ActiveView";
+
 const Home = () => {
-  return <h2>Home</h2>;
+  return <ActiveView />;
 };
 
 export default Home;
