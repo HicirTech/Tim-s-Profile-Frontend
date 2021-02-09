@@ -23,7 +23,7 @@ const App = () => {
     connection.start();
     setTimeout(() => {
       connection.send("onLoad");
-    }, 1000);
+    }, 5000);
   }, []);
 
   const setStoreCountNumber = (count) => {

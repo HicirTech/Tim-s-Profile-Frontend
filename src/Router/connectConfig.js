@@ -8,9 +8,9 @@ const conectConfig = {
 }; 
 
 const getLoginConnector = () => {
-  const connection = new signalR.HubConnectionBuilder()
-    .withUrl(conectConfig.loginPath)
-    .build();
+  const connection = new signalR.HubConnectionBuilder().withUrl(conectConfig.loginPath).build();
+  
+  
 
   return connection;
 };
