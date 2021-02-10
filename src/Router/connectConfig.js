@@ -1,8 +1,8 @@
 import * as signalR from "@microsoft/signalr";
 
-const serverPath = "https://localhost:49171/";
+// const serverPath = "https://localhost:49171/";
 
-// const serverPath = "https://timprofilebackend.herokuapp.com/";
+const serverPath = "https://timprofilebackend.herokuapp.com/";
 const conectConfig = {
   loginPath: `${serverPath}loginChecker`,
 };
