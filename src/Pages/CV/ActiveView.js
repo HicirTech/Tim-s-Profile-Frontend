@@ -1,16 +1,79 @@
 import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+import { ListItem } from "@material-ui/core";
 
 const ActiveView = (params) => {
   return (
     <Grid container style={{ width: "80vw", margin: "auto" }} spacing={1}>
       <Heading />
+      <SkillSets />
     </Grid>
   );
 };
 
+const SkillsetColumn = (props) => {
+  return (
+    <>
+      <Grid item xs={3}>
+        <Typography variant="h6" color="initial">
+          {props.heading}
+        </Typography>
+
+        {props.list.map((e) => {
+          return (
+            <ListItem button component="a">
+              <Typography variant="body2" color="initial">
+                {e}
+              </Typography>
+            </ListItem>
+          );
+        })}
+      </Grid>
+    </>
+  );
+};
+
 const SkillSets = () => {
+  const skillSetModel = {
+    Backend: [
+      "Asp.net core",
+      "OOP",
+      "Restful API",
+      "SignalR",
+      "Entity framework",
+      "LinQ",
+      "MySql Database",
+      "Java",
+    ],
+    Frontend: [
+      "React",
+      "Jquery",
+      "Razor Page",
+      "Bootstrap",
+      "Material-UI",
+      "Ajax(Axios)",
+    ],
+    Cloud: [
+      "AWS S3",
+      "AWS Aurora DB",
+      "AWS ECS",
+      "AWS EC2",
+      "AWS SES",
+      "AWS SNS",
+      "Twilio",
+    ],
+    DevOps: [
+      "Docker",
+      "Version Control with Git",
+      "Software Development Life Cycle",
+      "SCRUM development methodology",
+      "Kanban",
+    ],
+    "System Admin": ["PowerShell", "Linux Shell"],
+    Testing: ["Unit Testing", "Selenium"],
+  };
+
   return (
     <>
       <Grid item xs={10}>
@@ -20,10 +83,9 @@ const SkillSets = () => {
       </Grid>
       <Grid item xs={10}>
         <Grid container spacing={1}>
-          <Grid item xs={4}>
-
-            
-          </Grid>
+          {Object.keys(skillSetModel).map((c) => {
+            return <SkillsetColumn heading={c} list={skillSetModel[c]} />;
+          })}
         </Grid>
       </Grid>
     </>
