@@ -13,16 +13,15 @@ function envState(state, action) {
       return state.count;
   }
 }
-
+const connection = getLoginConnector();
 const store = createStore(envState, { count: 0, data: 2 });
 
 const App = () => {
-  const connection = getLoginConnector();
-
   useEffect(() => {
-    connection.start();
     setTimeout(() => {
-      connection.send("onLoad");
+      connection.send("onLoad").then((e) => {
+        console.info(`Connection : ${connection.state} -> ask for init data`);
+      });
     }, 5000);
   }, []);
 
@@ -34,10 +33,12 @@ const App = () => {
   };
 
   connection.on("onLoadConfirm", (s) => {
+    console.log(`on load confirm -> set init people number as ${s}`);
     setStoreCountNumber(s);
   });
 
   connection.on("updateCount", (s) => {
+    console.log("more people coming -> update counter");
     setStoreCountNumber(s);
   });
 
